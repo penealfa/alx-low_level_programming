@@ -1,34 +1,51 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
-  * main - Prints combination of numbers
+  * print_times_table - Prints a multiplication table up to param
+  * @n: The number to be treated
   *
-  * Return: Always (Success)
+  * Return: Number matrix
   */
-int main(void)
+void print_times_table(int n)
 {
-	int c, i;
+	int x, y, z;
 
-	for (c = '0'; c <= '9'; c++)
+	if (n >= 0 && n <= 14)
 	{
-		for (i = '0'; i <= '9'; i++)
+		for (x = 0; x <= n; x++)
 		{
-			if (c < i)
+			for (y = 0; y <= n; y++)
 			{
-				putchar(c);
-				putchar(i);
-
-				if (c != '8' || (c == '8' && i != '9'))
+				z = x * y;
+				if (z > 99)
 				{
-					putchar(',');
-					putchar(' ');
+					_putchar(',');
+					_putchar(32);
+					_putchar((z / 100) + '0');
+					_putchar(((z / 10) % 10) + '0');
+					_putchar((z % 10) + '0');
+				}
+				else if (z > 9)
+				{
+					_putchar(',');
+					_putchar(32);
+					_putchar(32);
+					_putchar(((z / 10) % 10) + '0');
+					_putchar((z % 10) + '0');
+				}
+				else
+				{
+					if (y != 0)
+					{
+						_putchar(',');
+						_putchar(32);
+						_putchar(32);
+						_putchar(32);
+					}
+					_putchar(z + '0');
 				}
 			}
+			_putchar('\n');
 		}
 	}
-
-	putchar('\n');
-
-	return (0);
-
 }
